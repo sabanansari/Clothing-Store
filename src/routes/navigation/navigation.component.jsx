@@ -8,16 +8,20 @@ import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component
 // import { CartContext } from "../../contexts/cart.context";
 import { selectIsCartOpen } from "../../store/cart/cart.selector";
 import {LogoContainer, NavigationContainer, NavLinks, NavLink} from './navigation.styles.jsx';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectCurrentUser } from "../../store/user/user.selector";
+import { signOutStart } from "../../store/user/user.action";
 
 const Navigation = () =>{
 
     const currentUser = useSelector(selectCurrentUser);
     // const {currentUser} = useContext(UserContext);
     // const {isCartOpen} = useContext(CartContext);
+    const dispatch = useDispatch();
 
     const isCartOpen = useSelector(selectIsCartOpen);
+
+    const signOutUser = () => dispatch(signOutStart());
 
     return(
       <Fragment>
